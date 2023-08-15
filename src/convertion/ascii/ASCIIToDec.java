@@ -11,15 +11,22 @@ public class ASCIIToDec
     * + get ASCII input (char)
     * + convert to decimal and return
     */
-    public int asciiToDec()
+    public void asciiToDec()
     {
-        System.out.print("\nPlease enter the ascii code: ");
-        char ascii = sc.next().charAt(0);
+        System.out.print("\nPlease enter the ascii code (Type EXIT to quit): ");
+        String input = sc.next();
 
-        int decimal = ascii;
+        if (input.equalsIgnoreCase("EXIT"))
+            return;
 
-        System.out.println(ascii + " = " + decimal + " in decimal");
-
-        return decimal;
+        try
+        {
+            char ascii = input.charAt(0);
+            System.out.println(ascii + " = " + (int) ascii + " in decimal\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

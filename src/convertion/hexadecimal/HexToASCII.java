@@ -4,35 +4,42 @@ import java.util.*;
 
 public class HexToASCII
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
     * Hexadecimal to ASCII
     * + get hex input
     * + Convert to ASCII:
     * ++ Split the hex string into two character group
-    * ++ Convert the each character group into integer using valueOf method
+    * ++ Convert each character group into integer using valueOf method
     * ++ Cast the integer value to char
     * + return ascii result
     */
-    public String hexToAscii()
+    public void hexToAscii()
     {
-        System.out.print("\nPlease enter the hexadecimal code: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the hexadecimal code (Type EXIT to quit): ");
         String hex = sc.nextLine();
 
-        StringBuilder builder = new StringBuilder();
+        if (hex.equalsIgnoreCase("EXIT"))
+            return;
 
-        for (int i = 0; i < hex.length(); i = i + 2)
+        try
         {
-            String s = hex.substring(i, i + 2);
-            int n = Integer.valueOf(s, 16);
-            builder.append((char)n);
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < hex.length(); i = i + 2)
+            {
+                String s = hex.substring(i, i + 2);
+                int n = Integer.valueOf(s, 16);
+                builder.append((char)n);
+            }
+
+            String ascii = builder.toString();
+
+            System.out.println(hex + " = " + ascii + " in ASCII\n");
         }
-
-        String ascii = builder.toString();
-
-        System.out.println(hex + " = " + ascii + " in ASCII");
-
-        return ascii;
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

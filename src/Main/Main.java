@@ -17,7 +17,6 @@ public class Main
         Print printVar = new Print();
 
         printVar.printWelcome();
-        printVar.printChoose();
 
         Operation operationObject = new Operation();
         operationObject.operationSelector();

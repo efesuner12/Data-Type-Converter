@@ -4,22 +4,30 @@ import java.util.*;
 
 public class DecToBin
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
     * Decimal to binary
     * + Get decimal input
     * + convert and return result
     */
-    public String decToBin()
+    public void decToBin()
     {
-        System.out.print("\nPlease enter the decimal number: ");
-        int decimal = sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the decimal number (Type EXIT to quit): ");
+        String input = sc.next();
 
-        String binary = Integer.toBinaryString(decimal);
+        if (input.equalsIgnoreCase("EXIT"))
+            return;
 
-        System.out.print(decimal +" = "+ binary + " in binary");
+        try
+        {
+            int decimal = Integer.parseInt(input);
+            String binary = Integer.toBinaryString(decimal);
 
-        return binary;
+            System.out.println(decimal + " = " + binary + " in binary\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

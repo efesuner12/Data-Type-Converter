@@ -4,12 +4,8 @@ import java.util.*;
 
 public class BinToASCII
 {
-    Scanner sc = new Scanner(System.in);
-
-    public String binToAscii()
+    public void binToAscii()
     {
-
-
-        return null;
+        Scanner sc = new Scanner(System.in);
     }
 }

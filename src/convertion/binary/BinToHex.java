@@ -4,24 +4,30 @@ import java.util.*;
 
 public class BinToHex
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
      * Binary to hexadecimal
      * + Get binary input (convert it to int)
      * + convert and return result
      */
-    public String binToHex()
+    public void binToHex()
     {
-        System.out.print("\nPlease enter the binary number: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the binary number (Type EXIT to quit): ");
         String binary = sc.nextLine();
 
-        int binToConvert = Integer.parseInt(binary, 2);
+        if (binary.equalsIgnoreCase("EXIT"))
+            return;
 
-        String hexa = Integer.toHexString(binToConvert);
+        try
+        {
+            int binToConvert = Integer.parseInt(binary, 2);
+            String hexa = Integer.toHexString(binToConvert);
 
-        System.out.println(binary + " = " + hexa + " in hexadecimal");
-
-        return hexa;
+            System.out.println(binary + " = " + hexa + " in hexadecimal\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

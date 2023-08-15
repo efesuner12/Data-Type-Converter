@@ -4,22 +4,30 @@ import java.util.*;
 
 public class DecToHex
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
      * Decimal to hexadecimal
      * + Get decimal input
      * + convert and return result
      */
-    public String decToHex()
+    public void decToHex()
     {
-        System.out.print("\nPlease enter the decimal number: ");
-        int decimal = sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the decimal number (Type EXIT to quit): ");
+        String input = sc.next();
 
-        String hexa = Integer.toHexString(decimal);
+        if (input.equalsIgnoreCase("EXIT"))
+            return;
 
-        System.out.print(decimal + " = " + hexa + " in hexadecimal");
+        try
+        {
+            int decimal = Integer.parseInt(input);
+            String hexa = Integer.toHexString(decimal);
 
-        return hexa;
+            System.out.println(decimal + " = " + hexa + " in hexadecimal\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

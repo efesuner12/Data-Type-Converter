@@ -4,22 +4,28 @@ import java.util.*;
 
 public class BinToDec
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
      * Binary to decimal
      * + Get binary input
      * + convert and return result
      */
-    public int binToDec()
+    public void binToDec()
     {
-        System.out.print("\nPlease enter the binary number: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the binary number (Type EXIT to quit): ");
         String binary = sc.nextLine();
 
-        int decimal = Integer.parseInt(binary, 2);
+        if (binary.equalsIgnoreCase("EXIT"))
+            return;
 
-        System.out.print(binary + " = " + decimal + " in decimal");
-
-        return decimal;
+        try
+        {
+            int decimal = Integer.parseInt(binary, 2);
+            System.out.println(binary + " = " + decimal + " in decimal\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

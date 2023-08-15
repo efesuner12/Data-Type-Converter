@@ -4,35 +4,42 @@ import java.util.*;
 
 public class ASCIIToBin
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
      * Ascii to binary
      * + Get ascii input
      * + convert and return result
      */
-    public String asciiToBin()
+    public void asciiToBin()
     {
-        System.out.print("\nPlease enter the ascii code: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the ascii code (Type EXIT to quit): ");
         String ascii = sc.nextLine();
 
-        byte[] bytes = ascii.getBytes();
-        StringBuilder binary = new StringBuilder();
+        if (ascii.equalsIgnoreCase("EXIT"))
+            return;
 
-        for (byte b : bytes)
+        try
         {
-            int val = b;
-            for (int i = 0; i < 8; i++)
+            byte[] bytes = ascii.getBytes();
+            StringBuilder binary = new StringBuilder();
+
+            for (byte b : bytes)
             {
-                binary.append((val & 128) == 0 ? 0 : 1);
-                val <<= 1;
+                int val = b;
+                for (int i = 0; i < 8; i++)
+                {
+                    binary.append((val & 128) == 0 ? 0 : 1);
+                    val <<= 1;
+                }
             }
+
+            String finBinary = binary.toString();
+
+            System.out.println(ascii + " = " + finBinary + " in binary\n");
         }
-
-        String finBinary = binary.toString();
-
-        System.out.print(ascii + " = " + finBinary + " in binary");
-
-        return finBinary;
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }

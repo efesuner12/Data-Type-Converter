@@ -18,104 +18,98 @@ import java.util.*;
 
 public class Operation
 {
+    Scanner sc = new Scanner(System.in);
+
     /*
-    * Operation selector
-    * + get user input of operation
-    * + switch case -> call appropriate method with class object
-    * + ending loop
-    */
+     * Operation selector
+     * + get user input of operation
+     * + switch case -> call appropriate method with class object
+     */
     public void operationSelector()
     {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("--> ");
-        int choice = sc.nextInt();
+        boolean canGo = true;
 
-        switch(choice)
+        while (canGo)
         {
-            case 1:
-                ASCIIToBin asciiVar_1 = new ASCIIToBin();
-                asciiVar_1.asciiToBin();
-                endingSelector();
-                break;
-            case 2:
-                ASCIIToDec asciiVar_2 = new ASCIIToDec();
-                asciiVar_2.asciiToDec();
-                endingSelector();
-                break;
-            case 3:
-                ASCIIToHex asciiVar_3 = new ASCIIToHex();
-                asciiVar_3.asciiToHex();
-                endingSelector();
-                break;
-            case 4:
-                BinToASCII binVar_1 = new BinToASCII();
+            Print printVar = new Print();
+            printVar.printChoose();
 
-            case 5:
-                BinToDec binVar_2 = new BinToDec();
-                binVar_2.binToDec();
-                endingSelector();
-                break;
-            case 6:
-                BinToHex binVar_3 = new BinToHex();
-                binVar_3.binToHex();
-                endingSelector();
-                break;
-            case 7:
-                DecToASCII decVar_1 = new DecToASCII();
+            System.out.print("--> ");
+            int choice = sc.nextInt();
 
-            case 8:
-                DecToBin decVar_2 = new DecToBin();
-                decVar_2.decToBin();
-                endingSelector();
-                break;
-            case 9:
-                DecToHex decVar_3 = new DecToHex();
-                decVar_3.decToHex();
-                endingSelector();
-                break;
-            case 10:
-                HexToASCII hexVar_1 = new HexToASCII();
-                hexVar_1.hexToAscii();
-                endingSelector();
-                break;
-            case 11:
-                HexToBin hexVar_2 = new HexToBin();
-                hexVar_2.hexToBin();
-                endingSelector();
-                break;
-            case 12:
-                HexToDec hexVar_3 = new HexToDec();
-                hexVar_3.hexToDec();
-                endingSelector();
-                break;
+            switch (choice)
+            {
+                case 1:
+                    ASCIIToBin asciiVar_1 = new ASCIIToBin();
+                    asciiVar_1.asciiToBin();
+                    stall();
+                    break;
+                case 2:
+                    ASCIIToDec asciiVar_2 = new ASCIIToDec();
+                    asciiVar_2.asciiToDec();
+                    stall();
+                    break;
+                case 3:
+                    ASCIIToHex asciiVar_3 = new ASCIIToHex();
+                    asciiVar_3.asciiToHex();
+                    stall();
+                    break;
+                case 4:
+                    BinToASCII binVar_1 = new BinToASCII();
+                    break;
+                case 5:
+                    BinToDec binVar_2 = new BinToDec();
+                    binVar_2.binToDec();
+                    stall();
+                    break;
+                case 6:
+                    BinToHex binVar_3 = new BinToHex();
+                    binVar_3.binToHex();
+                    stall();
+                    break;
+                case 7:
+                    DecToASCII decVar_1 = new DecToASCII();
+                    break;
+                case 8:
+                    DecToBin decVar_2 = new DecToBin();
+                    decVar_2.decToBin();
+                    stall();
+                    break;
+                case 9:
+                    DecToHex decVar_3 = new DecToHex();
+                    decVar_3.decToHex();
+                    stall();
+                    break;
+                case 10:
+                    HexToASCII hexVar_1 = new HexToASCII();
+                    hexVar_1.hexToAscii();
+                    stall();
+                    break;
+                case 11:
+                    HexToBin hexVar_2 = new HexToBin();
+                    hexVar_2.hexToBin();
+                    stall();
+                    break;
+                case 12:
+                    HexToDec hexVar_3 = new HexToDec();
+                    hexVar_3.hexToDec();
+                    stall();
+                    break;
+                case 99:
+                    System.out.println("\nBYE!\n");
+                    canGo = false;
+                    break;
+                default:
+                    System.out.println("'" + choice + "'" + " is not a valid choice!");
+                    System.out.println("Please enter a valid choice and try again.");
+            }
         }
     }
 
-    /*
-    * Ending Operation Selector
-    * + print info text by creating a Print Class object
-    * + get user input of choice at the end
-    * + 1 = conversion --> call operationSelector()
-    * + 2 = end program
-    */
-    public void endingSelector()
+    private void stall()
     {
-        Print printObject = new Print();
-        printObject.printEndingChoose();
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("--> ");
-        int choice = sc.nextInt();
-
-        System.out.println();
-
-        switch(choice)
-        {
-            case 1:
-                printObject.printChoose();
-                operationSelector();
-            case 2:
-                break;
-        }
+        System.out.println("Press any key to continue...");
+        try {System.in.read();}
+        catch (Exception ignored) {}
     }
 }

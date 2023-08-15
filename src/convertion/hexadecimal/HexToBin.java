@@ -4,24 +4,30 @@ import java.util.*;
 
 public class HexToBin
 {
-    Scanner sc = new Scanner(System.in);
-
     /*
      * Hexadecimal to binary
      * + Get hex input (convert it to int)
      * + convert and return result
      */
-    public String hexToBin()
+    public void hexToBin()
     {
-        System.out.print("\nPlease enter the hexadecimal number: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nPlease enter the hexadecimal number (Type EXIT to quit): ");
         String hex = sc.nextLine();
 
-        int hexToConvert = Integer.parseInt(hex, 16);
+        if (hex.equalsIgnoreCase("EXIT"))
+            return;
 
-        String binary = Integer.toBinaryString(hexToConvert);
+        try
+        {
+            int hexToConvert = Integer.parseInt(hex, 16);
+            String binary = Integer.toBinaryString(hexToConvert);
 
-        System.out.print(hex + " = " + binary + " in binary");
-
-        return binary;
+            System.out.println(hex + " = " + binary + " in binary\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println("There has been an error!\nError message: " + e + "\n");
+        }
     }
 }
